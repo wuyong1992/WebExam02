@@ -23,7 +23,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://D:/lombok.jar!/" />
+          <root url="jar://E:/JAVA_Data/lombok.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
