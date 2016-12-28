@@ -1,4 +1,5 @@
 package com.wy.Bean;
+
 /**
  * 学生管理系统，学生信息类
  * Created by Administrator on 2016/12/27.
@@ -8,7 +9,7 @@ public class StudentInfo {
     private String name;
     private String bj;
     private String kc;
-    private String score;
+    private Double score;
 
     public StudentInfo() {
     }
@@ -37,13 +38,16 @@ public class StudentInfo {
         this.kc = kc;
     }
 
-    public String getScore() {
+    public Double getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(Double score) {
         this.score = score;
     }
 
-
+    @Override
+    public String toString() {
+        return "name='" + name + '\t' + " bj='" + bj + '\t' + " kc='" + kc + '\t' + "score=" + score;
+    }
 }

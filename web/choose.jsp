@@ -1,3 +1,5 @@
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Iterator" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -6,7 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="stu" class="com.wy.Bean.Student"/>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -33,7 +35,21 @@
     </style>
 </head>
 <body>
-<form action="#">
+
+<%
+    ArrayList info = (ArrayList) this.getServletConfig().getServletContext().getAttribute("student");
+    if (info.size() > 0) {
+        Iterator iterator = info.iterator();
+        while (iterator.hasNext()) {
+%>
+<%=iterator.next().toString()%>
+<br>
+<%
+        }
+    }
+%>
+
+<%--<form action="#">
     <table>
         <tr>
             <td>姓名</td>
@@ -43,16 +59,16 @@
         </tr>
         <tr>
             <td>
-                <input type="text" value="<%=session.getAttribute("name")%>">
+                <input type="text" >
             </td>
             <td>
-                <input type="text" value="<%=session.getAttribute("banji")%>">
+                <input type="text">
             </td>
             <td>
-                <input type="text" value="<%=session.getAttribute("course")%>">
+                <input type="text">
             </td>
             <td>
-                <input type="text" value="<%=session.getAttribute("score")%>">
+                <input type="text">
             </td>
         </tr>
         <tr>
@@ -64,6 +80,6 @@
             </td>
         </tr>
     </table>
-</form>
+</form>--%>
 </body>
 </html>

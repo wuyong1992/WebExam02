@@ -29,22 +29,17 @@ public class AddServlet extends HttpServlet {
         String course = request.getParameter("course");
         Double score = Double.valueOf(request.getParameter("score"));
 
-        ArrayList names = (ArrayList) this.context.getAttribute("context");
-        names.add(name);
-        this.context.setAttribute("infoName", names);
+        StudentInfo si = new StudentInfo();
+        si.setName(name);
+        si.setBj(banji);
+        si.setKc(course);
+        si.setScore(score);
 
+        ArrayList info = (ArrayList) this.context.getAttribute("student");
+        info.add(si);
+        this.context.setAttribute("student", info);
 
-
-        request.getSession().setAttribute("name",name);
-        request.getSession().setAttribute("banji",banji);
-        request.getSession().setAttribute("course",course);
-        request.getSession().setAttribute("score",score);
-
-        StudentInfo stu = new StudentInfo();
-        
-
-
-        response.sendRedirect("choose.jsp");
+        response.sendRedirect("index.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -55,7 +50,7 @@ public class AddServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         this.context = config.getServletContext();
-        this.context.setAttribute("infoName", new ArrayList());
+        this.context.setAttribute("student", new ArrayList());
 
     }
 }

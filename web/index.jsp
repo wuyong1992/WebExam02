@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Iterator" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2016/12/27
@@ -27,14 +28,25 @@
             out.println("<tr><td>&nbsp;</td><td>姓名</td><td>班级</td><td>课程</td><td>分数</td> </tr>");
             if (application.getAttribute("infoName") != null) {
         %>
-        <%=application.getAttribute("infoName")%>
         <%
             }
+            out.println("</table>");
+        %>
 
 
-
-
-        out.println("</table>");
+        <%
+            ArrayList info = (ArrayList) this.getServletConfig().getServletContext().getAttribute("student");
+            if (info != null) {
+                if (info.size() > 0) {
+                    Iterator iterator = info.iterator();
+                    while (iterator.hasNext()) {
+        %>
+        <%=iterator.next().toString()%>
+        <br>
+        <%
+                }
+            }
+        }
         %>
 
 
