@@ -9,7 +9,7 @@ public class StudentInfo {
     private String name;
     private String bj;
     private String kc;
-    private Double score;
+    private String score;
 
     public StudentInfo() {
     }
@@ -38,16 +38,13 @@ public class StudentInfo {
         this.kc = kc;
     }
 
-    public Double getScore() {
+    public String getScore() {
         return score;
     }
 
-    public void setScore(Double score) {
+    public void setScore(String score) {
         this.score = score;
     }
 
-    @Override
-    public String toString() {
-        return "name='" + name + '\t' + " bj='" + bj + '\t' + " kc='" + kc + '\t' + "score=" + score;
-    }
+
 }

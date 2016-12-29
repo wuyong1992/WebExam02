@@ -19,7 +19,7 @@ import java.util.ArrayList;
 @WebServlet(name = "AddServlet",urlPatterns = {"/AddServlet"})
 public class AddServlet extends HttpServlet {
 
-    private ServletContext context = null;
+    public static ArrayList<StudentInfo> list = new ArrayList<StudentInfo>();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -27,18 +27,16 @@ public class AddServlet extends HttpServlet {
         String name = request.getParameter("name");
         String banji = request.getParameter("banji");
         String course = request.getParameter("course");
-        Double score = Double.valueOf(request.getParameter("score"));
+        String score = request.getParameter("score");
 
-        StudentInfo si = new StudentInfo();
-        si.setName(name);
-        si.setBj(banji);
-        si.setKc(course);
-        si.setScore(score);
+        StudentInfo stu = new StudentInfo();
+        stu.setName(name);
+        stu.setBj(banji);
+        stu.setKc(course);
+        stu.setScore(score);
 
-        ArrayList info = (ArrayList) this.context.getAttribute("student");
-        info.add(si);
-        this.context.setAttribute("student", info);
-
+        list.add(stu);
+        request.getSession().setAttribute("list", list);
         response.sendRedirect("index.jsp");
     }
 
@@ -46,11 +44,5 @@ public class AddServlet extends HttpServlet {
         doPost(request,response);
     }
 
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-        this.context = config.getServletContext();
-        this.context.setAttribute("student", new ArrayList());
 
-    }
 }
